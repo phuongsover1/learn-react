@@ -3,11 +3,21 @@ import './ExpenseItem.css';
 // import './ExpenseItem.css';
 
 function ExpenseItem(props) {
+	const day = props.date.toLocaleString('en-US', { day: '2-digit' });
+
+	const month = props.date.toLocaleString('en-US', { month: '2-digit' });
+	const year = props.date.toLocaleString('en-US', { year: 'numeric' });
 
 	return (
 		<div className='expense-item'>
 			<div>
-				{props.date.toISOString()}
+				<div>
+					{month}
+				</div>
+				<div>
+					{year}
+				</div>
+				<div>{day}</div>
 			</div>
 			<div className='expense-item__description'>
 				<h2>{props.title}</h2>
