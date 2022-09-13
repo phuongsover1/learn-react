@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Expense from './components/Expenses/Expense';
@@ -27,6 +27,10 @@ function App() {
 		},
 	];
 
+	const expenseDataHandler = (newExpenseData) => {
+		console.log('expenseData: ', newExpenseData);
+	};
+
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -43,7 +47,7 @@ function App() {
 					Learn React
 				</a>
 
-				<NewExpense />
+				<NewExpense onSaveExpenseData={expenseDataHandler} />
 				<Expense items={expenses} />
 			</header>
 		</div>
