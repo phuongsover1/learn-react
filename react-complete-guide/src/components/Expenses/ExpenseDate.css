@@ -1,5 +1,5 @@
 .expense-date {
-	display: flex;
+	display: flex
 	flex-direction: column;
 	width: 5.5rem;
 	height: 5.5rem;
