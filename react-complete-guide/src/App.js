@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Expense from './components/Expenses/Expense';
+import NewExpense from './components/NewExpense/NewExpense';
 
 function App() {
 	const expenses = [
@@ -26,7 +27,6 @@ function App() {
 		},
 	];
 
-
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -43,9 +43,10 @@ function App() {
 					Learn React
 				</a>
 
+				<NewExpense />
 				<Expense items={expenses} />
 			</header>
-		</div >
+		</div>
 	);
 }
 
