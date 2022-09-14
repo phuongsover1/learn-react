@@ -5,13 +5,14 @@
 	align-items: center;
 }
 
-.char-bar__inner {
+.chart-bar__inner {
 	height: 100%;
 	width: 100%;
 	border: 1px solid #313131;
 	border-radius: 12px;
 	background-color: #c3b4f3;
 	overflow: hidden;
+	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 }
@@ -23,6 +24,7 @@
 }
 
 .chart-bar__label {
+	color: black;
 	font-weight: bold;
 	font-size: 0.5rem;
 	text-align: center;
