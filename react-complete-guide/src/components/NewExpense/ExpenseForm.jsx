@@ -58,6 +58,8 @@ function ExpenseForm(props) {
 		};
 
 		console.dir(props.onSaveExpenseData);
+
+		//Pass data to NewExpense parent component
 		props.onSaveExpenseData(expenseData);
 
 		// Clear the inputs after submitting form
