@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import AddUser from "./components/AddUser";
-import UsersList from "./components/UsersList";
+import AddUser from "./components/Users/AddUser";
+import UsersList from "./components/Users/UsersList";
 import ErrorModal from "./components/UI/ErrorModal";
 
 const initialUsersList = [];

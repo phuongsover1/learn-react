@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./AddUser.module.css";
-import Card from "./UI/Card";
-import Button from "./UI/Button";
+import Card from "../UI/Card";
+import Button from "../UI/Button";
 
 const AddUser = (props) => {
 	const style = {
@@ -20,11 +20,11 @@ const AddUser = (props) => {
 		props.onAddUserClick(newUser);
 	};
 	return (
-		<form className={styles.input} onSubmit={handleSubmit}>
-			<Card style={style}>
-				<label for="username">Username</label>
+		<Card className={styles.input}>
+			<form onSubmit={handleSubmit}>
+				<label htmlFor="username">Username</label>
 				<input type="text" name="username" id="username" />
-				<label for="age">Age (Years)</label>
+				<label htmlFor="age">Age (Years)</label>
 				<input type="number" name="age" id="age" />
 				<div
 					style={{
@@ -35,8 +35,8 @@ const AddUser = (props) => {
 				>
 					<Button type="submit" text="Add User" />
 				</div>
-			</Card>
-		</form>
+			</form>
+		</Card>
 	);
 };
 

@@ -1,14 +1,9 @@
 import React from "react";
 import styles from "./UsersList.module.css";
-import Card from "./UI/Card";
+import Card from "../UI/Card";
 
 // usersList
 const UsersList = (props) => {
-	const style = {
-		backgroundColor: "#eee",
-		margin: "1rem",
-	};
-
 	let content = "";
 	if (props.usersList.length > 0) {
 		content = props.usersList.map((user) => (
@@ -19,11 +14,9 @@ const UsersList = (props) => {
 	}
 
 	return (
-		<div className={styles.users}>
-			<Card style={style}>
-				<ul>{content}</ul>
-			</Card>
-		</div>
+		<Card className={styles.users}>
+			<ul>{content}</ul>
+		</Card>
 	);
 };
 
