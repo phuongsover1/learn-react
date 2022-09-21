@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./AddUser.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
-import Wrapper from "../Helpers/Wrapper";
 
 const AddUser = (props) => {
 	const [errorObject, setErrorObject] = useState({
 		isValid: true,
 		messages: "",
 	});
-	const [enteredUsername, setEnteredUsername] = useState("");
-	const [enteredAge, setEnteredAge] = useState("");
+
+	const nameInputRef = useRef(); // undefined
+	const ageInputRef = useRef(); // undefined
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
+		const enteredUsername = nameInputRef.current.value;
+		const enteredAge = ageInputRef.current.value;
+		console.log("ageInputRef: ", ageInputRef);
 		if (enteredUsername.trim().length === 0 && enteredAge.trim().length === 0) {
 			setErrorObject({
 				isValid: false,
@@ -49,18 +52,10 @@ const AddUser = (props) => {
 			key: Math.random().toString(),
 		};
 
+		nameInputRef.current.value = "";
+		ageInputRef.current.value = "";
+
 		props.onAddUserClick(newUser);
-
-		setEnteredUsername("");
-		setEnteredAge("");
-	};
-
-	const usernameChangeHandler = (event) => {
-		setEnteredUsername(event.target.value);
-	};
-
-	const ageChangeHandler = (event) => {
-		setEnteredAge(event.target.value);
 	};
 
 	const onCloseClickHandler = () => {
@@ -78,21 +73,9 @@ const AddUser = (props) => {
 			<Card className={styles.input}>
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="username">Username</label>
-					<input
-						type="text"
-						name="username"
-						id="username"
-						value={enteredUsername}
-						onChange={usernameChangeHandler}
-					/>
+					<input type="text" name="username" id="username" ref={nameInputRef} />
 					<label htmlFor="age">Age (Years)</label>
-					<input
-						type="number"
-						name="age"
-						id="age"
-						value={enteredAge}
-						onChange={ageChangeHandler}
-					/>
+					<input type="number" name="age" id="age" ref={ageInputRef} />
 					<div
 						style={{
 							display: "flex",
