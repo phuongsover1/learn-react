@@ -67,7 +67,7 @@ const AddUser = (props) => {
 		setErrorObject({ isValid: true });
 	};
 	return (
-		<Wrapper>
+		<>
 			{!errorObject.isValid && (
 				<ErrorModal
 					onCloseClick={onCloseClickHandler}
@@ -104,7 +104,7 @@ const AddUser = (props) => {
 					</div>
 				</form>
 			</Card>
-		</Wrapper>
+		</>
 	);
 };
 
