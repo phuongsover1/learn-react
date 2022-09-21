@@ -9,10 +9,10 @@ function App() {
 	};
 
 	return (
-		<div>
+		<React.Fragment>
 			<AddUser onAddUserClick={handleAddUserClick} />
 			<UsersList usersList={usersList} />
-		</div>
+		</React.Fragment>
 	);
 }
 
