@@ -3,6 +3,7 @@ import styles from "./AddUser.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
+import Wrapper from "../Helpers/Wrapper";
 
 const AddUser = (props) => {
 	const [errorObject, setErrorObject] = useState({
@@ -66,7 +67,7 @@ const AddUser = (props) => {
 		setErrorObject({ isValid: true });
 	};
 	return (
-		<div>
+		<Wrapper>
 			{!errorObject.isValid && (
 				<ErrorModal
 					onCloseClick={onCloseClickHandler}
@@ -103,7 +104,7 @@ const AddUser = (props) => {
 					</div>
 				</form>
 			</Card>
-		</div>
+		</Wrapper>
 	);
 };
 
