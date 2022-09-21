@@ -5,15 +5,18 @@ import Button from "./Button";
 
 const ErrorModal = (props) => {
 	return (
-		<div className={styles.backdrop}>
+		<div>
+			<div className={styles.backdrop}></div>
 			<Card className={styles.modal}>
 				<div className={styles.header}>
-					<h2 className={styles.header}>Invalid input</h2>
+					<h2 className={styles.header}>{props.title}</h2>
 				</div>
 				<div className={styles.content}>
-					<p>{props.errorMessage}</p>
+					<p>{props.messages}</p>
 					<div className={styles.actions}>
-						<Button text="Okay" onCloseClick={props.onCloseClick} />
+						<Button type="button" onCloseClick={props.onCloseClick}>
+							Okay
+						</Button>
 					</div>
 				</div>
 			</Card>
