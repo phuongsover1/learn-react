@@ -1,0 +1,48 @@
+
+001 Section-Style-Files
+https://github.com/academind/react-complete-guide-code/tree/11-practice-food-order-app/extra-files
+
+003 Header.module.css-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/Header.module.css
+
+003 meals.jpg-File
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/meals.jpg
+
+004 HeaderCartButton.module.css-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/HeaderCartButton.module.css
+
+004 CartIcon.js-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/CartIcon.js
+
+005 MealsSummary.js-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/MealsSummary.js
+
+005 MealsSummary.module.css-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/MealsSummary.module.css
+
+005 dummy-meals.js-Data-File-
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/dummy-meals.js
+
+005 AvailableMeals.module.css-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/AvailableMeals.module.css
+
+006 MealItem.module.css-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/MealItem.module.css
+
+006 Card.module.css-File
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/Card.module.css
+
+007 Input.module.css-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/Input.module.css
+
+007 MealItemForm.module.css
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/MealItemForm.module.css
+
+009 Cart.module.css-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/Cart.module.css
+
+010 Modal.module.css-Code
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/Modal.module.css
+
+016 CartItem.zip-File
+https://github.com/academind/react-complete-guide-code/blob/11-practice-food-order-app/extra-files/CartItem.zip
