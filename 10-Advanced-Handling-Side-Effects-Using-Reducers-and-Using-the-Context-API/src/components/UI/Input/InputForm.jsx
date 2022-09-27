@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect, useRef, useImperativeHandle } from "react";
 import styles from "./InputForm.module.css";
 
-const InputForm = (props) => {
+const InputForm = React.forwardRef((props, ref) => {
+	const inputRef = useRef(null);
+	const activate = () => {
+		inputRef.current.focus();
+	};
+
+	useImperativeHandle(ref, () => {
+		return { focus: activate };
+	});
 	return (
 		<div
 			className={`${styles.control} ${
@@ -10,6 +18,7 @@ const InputForm = (props) => {
 		>
 			<label htmlFor={props.type}>{props.label}</label>
 			<input
+				ref={inputRef}
 				type={props.type}
 				id={props.id}
 				value={props.value}
@@ -18,6 +27,6 @@ const InputForm = (props) => {
 			/>
 		</div>
 	);
-};
+});
 
 export default InputForm;
