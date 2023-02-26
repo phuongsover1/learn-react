@@ -1,7 +1,11 @@
 import React from "react";
-import HeaderContainer from "./components/Header/HeaderContainer";
+import Header from "./components/Layout/Header";
 function App() {
-	return <HeaderContainer />;
+  return (
+    <React.Fragment>
+      <Header />
+    </React.Fragment>
+  );
 }
 
 export default App;
