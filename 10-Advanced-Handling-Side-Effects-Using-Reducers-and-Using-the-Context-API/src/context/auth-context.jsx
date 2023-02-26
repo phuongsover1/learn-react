@@ -28,6 +28,7 @@ export const AuthContextProvider = (props) => {
 		setIsLoggedIn(true);
 		localStorage.setItem("isLoggedIn", "1");
 	};
+	
 	return (
 		<AuthContext.Provider
 			value={{
