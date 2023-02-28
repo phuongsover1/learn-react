@@ -6,9 +6,11 @@ import styles from "./Cart.module.css";
 
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
-
   const totalAmount = `$${cartContext.totalAmounts.toFixed(2)}`;
   const hasItems = cartContext.items.length > 0;
+
+  const addToCartHandler = (item) => {};
+  const removeFromCartHandler = (id) => {};
   const cartItems = (
     <ul className={styles["cart-items"]}>
       {cartContext.items.map((item) => (
@@ -17,6 +19,8 @@ const Cart = (props) => {
           name={item.name}
           price={item.price}
           amount={item.amount}
+          onAdd={addToCartHandler.bind(null, item)}
+          onRemove={removeFromCartHandler(null, item.id)}
         />
       ))}
     </ul>
