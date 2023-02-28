@@ -4,7 +4,7 @@ import styles from "./MealItem.module.css";
 const MealItem = (props) => {
   const price = `$${props.price.toFixed(2)}`;
   return (
-    <li id={props.id} className={styles.meal}>
+    <li key={props.id} className={styles.meal}>
       <div>
         <h3>{props.name}</h3>
         <div className={styles.description}>{props.description}</div>
