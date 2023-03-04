@@ -11,9 +11,9 @@ const useHttp = () => {
 
     try {
       const response = await fetch(requestConfig.url, {
-        method: requestConfig.method ?? "GET",
-        body: requestConfig.body ?? JSON.stringify(requestConfig.body),
-        headers: requestConfig.headers ?? requestConfig.headers,
+        method: requestConfig.method || "GET",
+        body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
+        headers: requestConfig.headers ? requestConfig.headers : {},
       });
 
       if (!response.ok) {
