@@ -11,6 +11,8 @@ const SimpleInput = props => {
     event.preventDefault();
     console.log(inputValue);
 
+    if (inputValue.trim() === '') return;
+
     // console.log(inputRef.current.value); SHOULD NOT DO THIS.
     setInputValue('');
   };
