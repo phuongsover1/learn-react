@@ -1,4 +1,8 @@
 import useMyInput from '../hooks/my-use-input';
+
+const isNotEmpty = value => value.trim() !== '';
+const isEmail = value => isNotEmpty(value) && value.includes('@');
+
 const BasicForm = props => {
   const {
     enteredValue: enteredFirstName,
@@ -7,7 +11,7 @@ const BasicForm = props => {
     inputChangeHandler: firstNameInputChangeHandler,
     inputBlurHandler: firstNameInputBlurHandler,
     resetInput: firstNameInputReset,
-  } = useMyInput(value => value.trim() !== '');
+  } = useMyInput(isNotEmpty);
   const firstNameInputClasses = firstNameInputHasError
     ? 'form-control invalid'
     : 'form-control';
@@ -18,7 +22,7 @@ const BasicForm = props => {
     inputChangeHandler: lastNameInputChangeHandler,
     inputBlurHandler: lastNameInputBlurHandler,
     resetInput: lastNameInputReset,
-  } = useMyInput(value => value.trim() !== '');
+  } = useMyInput(isNotEmpty);
   const lastNameInputClasses = lastNameInputHasError
     ? 'form-control invalid'
     : 'form-control';
@@ -29,7 +33,7 @@ const BasicForm = props => {
     inputChangeHandler: emailInputChangeHandler,
     inputBlurHandler: emailInputBlurHandler,
     resetInput: emailInputReset,
-  } = useMyInput(email => email.trim() !== '' && email.includes('@'));
+  } = useMyInput(isEmail);
   const emailInputClasses = emailInputHasError
     ? 'form-control invalid'
     : 'form-control';
