@@ -1,7 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import CartContext from '../../store/cart-context';
 import Modal from '../UI/Modal';
 import CartItem from './CartItem';
+import Checkout from './Checkout';
 import styles from './Cart.module.css';
 import useHttp from '../../hooks/use-http';
 
@@ -13,6 +14,7 @@ const Cart = props => {
   const totalAmount = `$${cartContext.totalAmounts.toFixed(2)}`;
   const hasItems = cartContext.items.length > 0;
   const { error: orderError, sendRequest: saveOrder } = useHttp();
+  const [isChekingOut, setIsCheckingOut] = useState(false);
 
   const addToCartHandler = item => {
     cartContext.addItem({ ...item, amount: 1 });
@@ -22,22 +24,23 @@ const Cart = props => {
   };
 
   const onOrderHandler = () => {
-    saveOrder(
-      {
-        url: 'https://react-http-d373b-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json',
-        method: 'POST',
-        body: cartContext.items,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-      logOrder
-    );
-    if (orderError) {
-      console.log(orderError);
-    } else {
-      cartContext.clearItems();
-    }
+    setIsCheckingOut(true);
+    // saveOrder(
+    //   {
+    //     url: 'https://react-http-d373b-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json',
+    //     method: 'POST',
+    //     body: cartContext.items,
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   },
+    //   logOrder
+    // );
+    // if (orderError) {
+    //   console.log(orderError);
+    // } else {
+    //   cartContext.clearItems();
+    // }
   };
   const cartItems = (
     <ul className={styles['cart-items']}>
@@ -53,6 +56,19 @@ const Cart = props => {
       ))}
     </ul>
   );
+
+  const modalAction = (
+    <div className={styles.actions}>
+      <button className={styles['button-alt']} onClick={props.onClose}>
+        Close
+      </button>
+      {hasItems && (
+        <button className={styles.button} onClick={onOrderHandler}>
+          Order
+        </button>
+      )}
+    </div>
+  );
   return (
     <Modal onClick={props.onClose}>
       {cartItems}
@@ -60,16 +76,8 @@ const Cart = props => {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      <div className={styles.actions}>
-        <button className={styles['button-alt']} onClick={props.onClose}>
-          Close
-        </button>
-        {hasItems && (
-          <button className={styles.button} onClick={onOrderHandler}>
-            Order
-          </button>
-        )}
-      </div>
+      {isChekingOut && <Checkout onClose={props.onClose} />}
+      {!isChekingOut && modalAction}
     </Modal>
   );
 };

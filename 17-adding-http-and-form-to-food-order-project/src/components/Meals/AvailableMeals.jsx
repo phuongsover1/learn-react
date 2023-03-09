@@ -34,7 +34,7 @@ const AvailableMeals = () => {
     };
   }, [sendRequest]);
 
-  if (mealsList.length === 0 && !isLoading) {
+  if (mealsList.length === 0) {
     content = <p>No meals available. Please add some meals </p>;
   }
 
