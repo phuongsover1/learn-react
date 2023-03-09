@@ -15,6 +15,9 @@ const useHttp = () => {
         headers: requestConfig.headers ?? {},
       });
 
+      if (!request.ok) {
+        throw new Error('Something went wrong');
+      }
       const data = await request.json();
 
       applyData(data);
