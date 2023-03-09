@@ -1,11 +1,11 @@
-import React from "react";
-import styles from "./CartItem.module.css";
+import React from 'react';
+import styles from './CartItem.module.css';
 
-const CartItem = (props) => {
+const CartItem = props => {
   const price = `$${props.price.toFixed(2)}`;
 
   return (
-    <li key={props.id} className={styles["cart-item"]}>
+    <li key={props.id} className={styles['cart-item']}>
       <div>
         <h2>{props.name}</h2>
         <div className={styles.summary}>

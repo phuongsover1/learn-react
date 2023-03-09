@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 
 const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,7 +10,7 @@ const useHttp = () => {
 
     try {
       const request = await fetch(requestConfig.url, {
-        method: requestConfig.method || "GET",
+        method: requestConfig.method || 'GET',
         body: requestConfig.body ? JSON.stringify(requestConfig.body) : null,
         headers: requestConfig.headers ?? {},
       });
