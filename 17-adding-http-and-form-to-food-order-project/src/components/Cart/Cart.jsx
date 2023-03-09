@@ -25,22 +25,23 @@ const Cart = props => {
 
   const onOrderHandler = () => {
     setIsCheckingOut(true);
-    // saveOrder(
-    //   {
-    //     url: 'https://react-http-d373b-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json',
-    //     method: 'POST',
-    //     body: cartContext.items,
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   },
-    //   logOrder
-    // );
-    // if (orderError) {
-    //   console.log(orderError);
-    // } else {
-    //   cartContext.clearItems();
-    // }
+  };
+
+  const onSubmitOrderHandler = userData => {
+    saveOrder(
+      {
+        url: 'https://react-http-d373b-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json',
+        method: 'POST',
+        body: {
+          user: userData,
+          orderedItems: cartContext.items,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+      () => {}
+    );
   };
   const cartItems = (
     <ul className={styles['cart-items']}>
@@ -76,7 +77,12 @@ const Cart = props => {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      {isChekingOut && <Checkout onClose={props.onClose} />}
+      {isChekingOut && (
+        <Checkout
+          onSubmitOrder={onSubmitOrderHandler}
+          onClose={props.onClose}
+        />
+      )}
       {!isChekingOut && modalAction}
     </Modal>
   );
