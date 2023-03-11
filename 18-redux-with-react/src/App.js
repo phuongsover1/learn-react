@@ -1,13 +1,20 @@
 import React from 'react';
 import Counter from './components/Counter';
-import { Provider } from 'react-redux';
-import store from './store/index';
+import { useSelector } from 'react-redux';
+import Header from './components/Header';
+import Auth from './components/Auth';
+import UserProfile from './components/UserProfile';
 
 function App() {
+  const a = 3;
+  const isAuthenticate = useSelector(state => state.auth.isAuthenticate);
   return (
-    <Provider store={store}>
+    <React.Fragment>
+      <Header />
+      {!isAuthenticate && <Auth />}
+      {isAuthenticate && <UserProfile />}
       <Counter />
-    </Provider>
+    </React.Fragment>
   );
 }
 

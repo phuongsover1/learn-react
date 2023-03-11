@@ -1,3 +1,4 @@
+import React from 'react';
 import classes from './UserProfile.module.css';
 
 const UserProfile = () => {
