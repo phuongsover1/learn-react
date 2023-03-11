@@ -6,7 +6,6 @@ import Auth from './components/Auth';
 import UserProfile from './components/UserProfile';
 
 function App() {
-  const a = 3;
   const isAuthenticate = useSelector(state => state.auth.isAuthenticate);
   return (
     <React.Fragment>
