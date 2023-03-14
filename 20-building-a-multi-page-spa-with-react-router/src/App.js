@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Welcome from './pages/Welcome';
 import Product from './pages/Product';
 import MainHeder from './components/MainHeader';
@@ -11,15 +11,17 @@ function App() {
     <div>
       <MainHeder />
       <main>
-        <Route path='/welcome'>
-          <Welcome />
-        </Route>
-        <Route path='/products'>
-          <Product />
-        </Route>
-        <Route path='/product-detail/:productId'>
-          <ProductDetail />
-        </Route>
+        <Switch>
+          <Route path='/welcome'>
+            <Welcome />
+          </Route>
+          <Route path='/products' exact>
+            <Product />
+          </Route>
+          <Route path='/products/:productId'>
+            <ProductDetail />
+          </Route>
+        </Switch>
       </main>
     </div>
   );
