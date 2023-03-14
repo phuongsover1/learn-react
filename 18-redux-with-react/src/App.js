@@ -5,6 +5,9 @@ import Header from './components/Header';
 import Auth from './components/Auth';
 import UserProfile from './components/UserProfile';
 
+const sum = (a, b) => {
+  return a + b;
+};
 function App() {
   const isAuthenticate = useSelector(state => state.auth.isAuthenticate);
   return (
