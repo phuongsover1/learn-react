@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MainHeder = () => {
   return (
     <nav>
       <ul>
         <li>
-          <a href='/welcome'>Welcome</a>
+          <Link to='/welcome'>Welcome</Link>
         </li>
         <li>
-          <a href='/products'>Product</a>
+          <Link to='/products'>Products</Link>
         </li>
       </ul>
     </nav>
