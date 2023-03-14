@@ -9,12 +9,14 @@ function App() {
   return (
     <div>
       <MainHeder />
-      <Route path='/welcome'>
-        <Welcome />
-      </Route>
-      <Route path='/products'>
-        <Product />
-      </Route>
+      <main>
+        <Route path='/welcome'>
+          <Welcome />
+        </Route>
+        <Route path='/products'>
+          <Product />
+        </Route>
+      </main>
     </div>
   );
 }
