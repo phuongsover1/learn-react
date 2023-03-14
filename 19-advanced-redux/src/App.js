@@ -4,23 +4,29 @@ import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import Notification from './components/UI/Notification';
-import { sendCartData } from './store/cart-slice';
+import { sendCartData, fetchCartData } from './store/cart-actions';
 
-let initial = true;
-
+let isInitial = false;
 function App() {
   const dispatch = useDispatch();
   const cartIsVisible = useSelector(state => state.ui.cartIsVisible);
   const notification = useSelector(state => state.ui.notification);
   const cart = useSelector(state => state.cart);
+
   useEffect(() => {
-    if (initial) {
-      initial = false;
+    dispatch(fetchCartData());
+  }, []);
+
+  useEffect(() => {
+    console.log(cart.changed);
+    if (isInitial) {
+      isInitial = true;
       return;
     }
-
-    dispatch(sendCartData(cart));
-  }, [cart]);
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
+  }, [cart, dispatch]);
   return (
     <React.Fragment>
       {notification && (
