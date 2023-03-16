@@ -1,9 +1,11 @@
-function App() {
-  return (
-    <div>
+import { useEffect } from 'react';
 
-    </div>
-  );
+function App() {
+  let a = 3;
+  useEffect(() => {
+    const b = a;
+  }, []);
+  return <div>Hello World1</div>;
 }
 
 export default App;
