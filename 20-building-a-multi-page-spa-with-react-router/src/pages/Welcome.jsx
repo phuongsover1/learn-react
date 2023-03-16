@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 const Welcome = () => {
-  return <h1>The Welcome Page</h1>;
+  return <h2>The Welcome Page</h2>;
 };
 
 export default Welcome;
