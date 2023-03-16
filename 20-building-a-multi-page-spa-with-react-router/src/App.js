@@ -1,10 +1,10 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Welcome from './pages/Welcome';
-import Product from './pages/Product';
-import MainHeder from './components/MainHeader';
-import ProductDetail from './pages/ProductDetail';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
+import MainHeder from './components/MainHeader';
+import Product from './pages/Product';
+import ProductDetail from './pages/ProductDetail';
+import Welcome from './pages/Welcome';
 
 function App() {
   return (
@@ -12,6 +12,9 @@ function App() {
       <MainHeder />
       <main>
         <Switch>
+          <Route path='/' exact>
+            <Redirect to='/welcome' />
+          </Route>
           <Route path='/welcome'>
             <Welcome />
           </Route>
