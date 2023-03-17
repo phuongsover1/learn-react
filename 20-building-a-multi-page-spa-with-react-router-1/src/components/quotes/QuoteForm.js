@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Fragment, useRef, useState } from 'react';
 import { Prompt } from 'react-router-dom';
 import Card from '../UI/Card';
