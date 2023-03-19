@@ -10,12 +10,12 @@ function App() {
     <Layout>
       <Switch>
         <Route path='/' exact>
-          <Redirect to='/quote' />
+          <Redirect to='/quotes' />
         </Route>
-        <Route path='/quote' exact>
+        <Route path='/quotes' exact>
           <AllQuotes />
         </Route>
-        <Route path='/quote/:quoteId'>
+        <Route path='/quotes/:quoteId'>
           <QuoteDetail />
         </Route>
         <Route path='/new-quote'>

@@ -1,17 +1,39 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Route, useParams, useRouteMatch, Link } from 'react-router-dom';
 import Comments from '../components/comments/Comments';
 import HighlightedQuote from '../components/quotes/HighlightedQuote';
-
-import { DUMMY_QUOTES } from './AllQuotes';
+import LoadingSpinner from '../components/UI/LoadingSpinner';
+import useHttp from '../hooks/use-http';
+import { getSingleQuote } from '../lib/api';
 
 const QuoteDetail = () => {
   const params = useParams();
-  const quote = DUMMY_QUOTES.find(quote => quote.id === params.quoteId);
+  const id = params.quoteId;
+  const {
+    sendRequest,
+    data: quote,
+    status,
+    error,
+  } = useHttp(getSingleQuote, true);
   const match = useRouteMatch();
-  console.log(match);
 
-  if (!quote) {
+  useEffect(() => {
+    sendRequest(id);
+  }, [sendRequest, id]);
+
+  if (status === 'pending') {
+    return (
+      <div className='centered'>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className='centered focused'>{error}</div>;
+  }
+
+  if (status === 'completed' && !quote) {
     return <p>Quote not found</p>;
   }
   return (
@@ -25,7 +47,7 @@ const QuoteDetail = () => {
         </div>
       </Route>
       <Route path={`${match.path}/comments`}>
-        <Comments />
+        <Comments id={quote.id} />
       </Route>
     </Fragment>
   );
