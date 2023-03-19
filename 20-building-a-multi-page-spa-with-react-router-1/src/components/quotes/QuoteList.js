@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Fragment } from 'react';
 
 import { useHistory, useLocation } from 'react-router-dom';
