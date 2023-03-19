@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 import classes from './QuoteItem.module.css';
 
 const QuoteItem = props => {
+  const match = useRouteMatch();
   return (
     <li key={props.id} className={classes.item}>
       <figure>
@@ -10,7 +11,7 @@ const QuoteItem = props => {
         </blockquote>
         <figcaption>{props.author}</figcaption>
       </figure>
-      <Link to={`/quote/${props.id}`} className='btn'>
+      <Link to={`${match.url}/${props.id}`} className='btn'>
         View Fullscreen
       </Link>
     </li>
