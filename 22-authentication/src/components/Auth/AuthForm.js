@@ -7,6 +7,7 @@ const AuthForm = () => {
   const passwordInputRef = useRef();
 
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const switchAuthModeHandler = () => {
     setIsLogin(prevState => !prevState);
@@ -20,6 +21,7 @@ const AuthForm = () => {
 
     // NOTE: optional: Add validation
 
+    setIsLoading(true);
     if (isLogin) {
     } else {
       const request = await fetch(
@@ -37,13 +39,19 @@ const AuthForm = () => {
         }
       );
 
+      setIsLoading(false);
+
       if (request.ok) {
         const data = await request.json();
         console.log(data);
       } else {
         // NOTE: Show an error modal
-        const error = await request.json();
-        console.log(error);
+        const data = await request.json();
+        let errorMessage = 'Authentication failed!';
+        if (data && data.error?.message) {
+          ({ message: errorMessage } = data.error);
+        }
+        alert(errorMessage);
       }
     }
   };
@@ -66,7 +74,10 @@ const AuthForm = () => {
           />
         </div>
         <div className={classes.actions}>
-          <button>{isLogin ? 'Login' : 'Create Account'}</button>
+          {!isLoading && (
+            <button>{isLogin ? 'Login' : 'Create Account'}</button>
+          )}
+          {isLoading && <p>Sending request ... </p>}
           <button
             type='button'
             className={classes.toggle}
