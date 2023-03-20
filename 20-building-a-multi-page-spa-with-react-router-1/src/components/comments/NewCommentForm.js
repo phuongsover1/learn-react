@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Fragment, useEffect, useRef, useState } from 'react';
-import { Prompt, useHistory } from 'react-router-dom';
 import useHttp from '../../hooks/use-http';
 import { addComment } from '../../lib/api';
 import LoadingSpinner from '../UI/LoadingSpinner';
@@ -9,7 +8,6 @@ import classes from './NewCommentForm.module.css';
 
 const NewCommentForm = props => {
   const [isEntered, setIsEntered] = useState(false);
-  const history = useHistory();
   const commentTextRef = useRef();
   const { sendRequest, error, status } = useHttp(
     addComment.bind(null, props.id)
@@ -45,12 +43,6 @@ const NewCommentForm = props => {
 
   return (
     <Fragment>
-      <Prompt
-        when={isEntered}
-        message={location =>
-          "You' ll lose any input that you have typed if you leave this page. Are you sure?"
-        }
-      />
       <form
         className={classes.form}
         onSubmit={submitFormHandler}

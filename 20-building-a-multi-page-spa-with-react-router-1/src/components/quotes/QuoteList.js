@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Fragment } from 'react';
 
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, createSearchParams } from 'react-router-dom';
 import QuoteItem from './QuoteItem';
 import classes from './QuoteList.module.css';
 
@@ -15,7 +15,7 @@ const sortQuotes = (quotes, ascending) => {
   });
 };
 const QuoteList = props => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
 
   const queryParams = new URLSearchParams(location.search);
@@ -24,9 +24,11 @@ const QuoteList = props => {
   const sortedQuotes = sortQuotes(props.quotes, isAscendingSorted);
 
   const changeSortingHandler = () => {
-    history.push({
+    navigate({
       pathname: location.pathname,
-      search: `?sort=${isAscendingSorted ? 'desc' : 'asc'}`,
+      search: createSearchParams({
+        sort: isAscendingSorted ? 'desc' : 'asc',
+      }).toString(),
     });
   };
   return (

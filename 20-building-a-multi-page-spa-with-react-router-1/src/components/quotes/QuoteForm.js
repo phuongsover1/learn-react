@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Fragment, useRef, useState } from 'react';
-import { Prompt } from 'react-router-dom';
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './QuoteForm.module.css';
@@ -33,12 +32,6 @@ const QuoteForm = props => {
 
   return (
     <Fragment>
-      <Prompt
-        when={isEntered}
-        message={location =>
-          "Are you sure to leave the page? All values you've enterd will be lost "
-        }
-      />
       <Card>
         <form
           onFocus={onFocusFormHandler}
