@@ -1,8 +1,10 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
+import { AuthContext } from '../../store/auth-context';
 
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
+  const ctxObj = useContext(AuthContext);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -19,40 +21,42 @@ const AuthForm = () => {
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    // NOTE: optional: Add validation
+    // TODO: optional: Add validation
+    let url = '';
 
     setIsLoading(true);
     if (isLogin) {
+      url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBAbyrBpWMgYLvElN3PvukZVjTzJFWkTcY';
     } else {
-      const request = await fetch(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBAbyrBpWMgYLvElN3PvukZVjTzJFWkTcY',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            returnSecureToken: true,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBAbyrBpWMgYLvElN3PvukZVjTzJFWkTcY';
+    }
+    const request = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: enteredEmail,
+        password: enteredPassword,
+        returnSecureToken: true,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-      setIsLoading(false);
+    setIsLoading(false);
 
-      if (request.ok) {
-        const data = await request.json();
-        console.log(data);
-      } else {
-        // NOTE: Show an error modal
-        const data = await request.json();
-        let errorMessage = 'Authentication failed!';
-        if (data && data.error?.message) {
-          ({ message: errorMessage } = data.error);
-        }
-        alert(errorMessage);
+    if (request.ok) {
+      const data = await request.json();
+      ctxObj.login(data.idToken);
+    } else {
+      // NOTE: Show an error modal
+      const data = await request.json();
+      let errorMessage = 'Authentication failed!';
+      if (data && data.error?.message) {
+        ({ message: errorMessage } = data.error);
       }
+      alert(errorMessage);
     }
   };
 
