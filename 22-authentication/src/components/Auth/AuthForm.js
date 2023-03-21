@@ -49,7 +49,10 @@ const AuthForm = () => {
 
     if (request.ok) {
       const data = await request.json();
-      ctxObj.login(data.idToken);
+      const expirationTime = new Date(
+        new Date().getTime() + +data.expiresIn * 1000
+      );
+      ctxObj.login(data.idToken, expirationTime.toISOString());
     } else {
       // NOTE: Show an error modal
       const data = await request.json();
