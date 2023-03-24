@@ -51,7 +51,9 @@ function YoutubeForm() {
           type='text'
           id='name'
           name='name'
-          {...formik.getFieldProps('name')}
+          onChange={formik.handleChange}
+          value={formik.values.name}
+          onBlur={formik.handleBlur}
         />
         {formik.errors.name && formik.touched.name && (
           <div className='error'>{formik.errors.name}</div>
@@ -63,7 +65,9 @@ function YoutubeForm() {
           type='text'
           id='email'
           name='email'
-          {...formik.getFieldProps('email')}
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          onBlur={formik.handleBlur}
         />
         {formik.errors.email && formik.touched.email && (
           <div className='error'>{formik.errors.email}</div>
@@ -75,7 +79,9 @@ function YoutubeForm() {
           type='text'
           id='channel'
           name='channel'
-          {...formik.getFieldProps('channel')}
+          onChange={formik.handleChange}
+          value={formik.values.channel}
+          onBlur={formik.handleBlur}
         />
         {formik.errors.channel && formik.touched.channel && (
           <div className='error'>{formik.errors.channel}</div>
