@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -7,6 +7,7 @@ const initialValues = {
   email: '',
   channel: '',
   comments: '',
+  address: '',
 };
 
 const onSubmit = values => {
@@ -34,6 +35,7 @@ const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email format').required('Required'),
   channel: Yup.string().trim().required('Required!'),
   comments: Yup.string().trim(),
+  address: Yup.string().trim().required('Required'),
 });
 function YoutubeForm() {
   return (
@@ -67,6 +69,24 @@ function YoutubeForm() {
         <div className='form-control'>
           <label htmlFor='comments'>Comments</label>
           <Field as='textarea' name='comments' id='comments' />
+        </div>
+        <div className='form-control'>
+          <label htmlFor='address'>Address</label>
+          <Field name='address'>
+            {props => {
+              console.log(props);
+
+              const { field, meta } = props;
+              return (
+                <Fragment>
+                  <input type='text' {...field} />
+                  {meta.touched && meta.error && (
+                    <div className='error'>{meta.error}</div>
+                  )}
+                </Fragment>
+              );
+            }}
+          </Field>
         </div>
         <button type='submit'>Submit</button>
       </Form>
