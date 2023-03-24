@@ -6,6 +6,7 @@ const initialValues = {
   name: 'Phuong',
   email: '',
   channel: '',
+  comments: '',
 };
 
 const onSubmit = values => {
@@ -32,6 +33,7 @@ const validationSchema = Yup.object({
   name: Yup.string().required('Required!'),
   email: Yup.string().email('Invalid email format').required('Required'),
   channel: Yup.string().trim().required('Required!'),
+  comments: Yup.string().trim(),
 });
 function YoutubeForm() {
   return (
@@ -54,8 +56,17 @@ function YoutubeForm() {
         </div>
         <div className='form-control'>
           <label htmlFor='channel'>Channel</label>
-          <Field type='text' id='channel' name='channel' />
+          <Field
+            type='text'
+            id='channel'
+            name='channel'
+            placeholder='Please enter youtube channel'
+          />
           <ErrorMessage name='channel' />
+        </div>
+        <div className='form-control'>
+          <label htmlFor='comments'>Comments</label>
+          <Field as='textarea' name='comments' id='comments' />
         </div>
         <button type='submit'>Submit</button>
       </Form>
