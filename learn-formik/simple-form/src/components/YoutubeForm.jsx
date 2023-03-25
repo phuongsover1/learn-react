@@ -1,10 +1,4 @@
-import {
-  ErrorMessage,
-  Field,
-  FieldArray,
-  Form,
-  Formik,
-} from 'formik';
+import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
 import React, { Fragment } from 'react';
 import * as Yup from 'yup';
 
@@ -44,9 +38,7 @@ const validate = values => {
 
 const validationSchema = Yup.object({
   name: Yup.string().required('Required!'),
-  email: Yup.string()
-    .email('Invalid email format')
-    .required('Required'),
+  email: Yup.string().email('Invalid email format').required('Required'),
   channel: Yup.string().trim().required('Required!'),
   comments: Yup.string().trim(),
   address: Yup.string().trim().required('Required'),
@@ -57,6 +49,7 @@ function YoutubeForm() {
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
+      validateOnChange={false}
     >
       <Form>
         <div className='form-control'>
@@ -88,8 +81,6 @@ function YoutubeForm() {
           <label htmlFor='address'>Address</label>
           <Field name='address'>
             {props => {
-              console.log(props);
-
               const { field, meta } = props;
               return (
                 <Fragment>
@@ -116,17 +107,14 @@ function YoutubeForm() {
         </div>
         <div className='form-control'>
           <label htmlFor='secondaryPh'>Secondary Phone Number</label>
-          <Field
-            type='text'
-            id='secondaryPh'
-            name='phoneNumbers[1]'
-          />
+          <Field type='text' id='secondaryPh' name='phoneNumbers[1]' />
         </div>
         <div className='form-control'>
           <label>List of phone numbers</label>
           <FieldArray name='phNumbers'>
             {fieldArrayProps => {
               const { push, remove, form } = fieldArrayProps;
+              console.log('form error:', form.errors);
               const { values } = form;
               const { phNumbers } = values;
 
@@ -145,10 +133,7 @@ function YoutubeForm() {
                             -{' '}
                           </button>
                         )}
-                        <button
-                          type='button'
-                          onClick={push.bind(null, '')}
-                        >
+                        <button type='button' onClick={push.bind(null, '')}>
                           {' '}
                           +{' '}
                         </button>
