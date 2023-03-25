@@ -1,11 +1,3 @@
-**/node_modules/
-
-.yarn/
-
-do-an/rapchieuphim
-react-workspaces/20-building-a-multi-page-spa-with-react-router.code-workspace
-do-an/backend-rapchieuphim
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies

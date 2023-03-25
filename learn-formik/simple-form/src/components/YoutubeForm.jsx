@@ -1,5 +1,5 @@
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { Fragment } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const initialValues = {
@@ -8,6 +8,10 @@ const initialValues = {
   channel: '',
   comments: '',
   address: '',
+  social: {
+    facebook: '',
+    twitter: '',
+  },
 };
 
 const onSubmit = values => {
@@ -32,7 +36,9 @@ const validate = values => {
 
 const validationSchema = Yup.object({
   name: Yup.string().required('Required!'),
-  email: Yup.string().email('Invalid email format').required('Required'),
+  email: Yup.string()
+    .email('Invalid email format')
+    .required('Required'),
   channel: Yup.string().trim().required('Required!'),
   comments: Yup.string().trim(),
   address: Yup.string().trim().required('Required'),
@@ -87,6 +93,14 @@ function YoutubeForm() {
               );
             }}
           </Field>
+        </div>
+        <div className='form-control'>
+          <label htmlFor='facebook'>Facebook</label>
+          <Field type='text' id='facebook' name='social.facebook' />
+        </div>
+        <div className='form-control'>
+          <label htmlFor='twitter'>Twitter</label>
+          <Field type='text' id='twitter' name='social.twitter' />
         </div>
         <button type='submit'>Submit</button>
       </Form>
