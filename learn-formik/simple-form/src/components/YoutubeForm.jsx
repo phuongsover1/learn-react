@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, FieldArray, Form, Formik } from 'formik';
 import React, { Fragment } from 'react';
 import * as Yup from 'yup';
+import ErrorText from './ErrorText';
 
 const initialValues = {
   name: 'Phuong',
@@ -40,9 +41,14 @@ const validationSchema = Yup.object({
   name: Yup.string().required('Required!'),
   email: Yup.string().email('Invalid email format').required('Required'),
   channel: Yup.string().trim().required('Required!'),
-  comments: Yup.string().trim(),
   address: Yup.string().trim().required('Required'),
 });
+
+const validateComments = value => {
+  let error = null;
+  if (!value) error = 'Required!';
+  return error;
+};
 function YoutubeForm() {
   return (
     <Formik
@@ -75,7 +81,18 @@ function YoutubeForm() {
         </div>
         <div className='form-control'>
           <label htmlFor='comments'>Comments</label>
-          <Field as='textarea' name='comments' id='comments' />
+          <Field
+            as='textarea'
+            name='comments'
+            id='comments'
+            validate={validateComments}
+          />
+          <ErrorMessage name='comments'>
+            {error => {
+              console.log('errro', error);
+              return <ErrorText>{error}</ErrorText>;
+            }}
+          </ErrorMessage>
         </div>
         <div className='form-control'>
           <label htmlFor='address'>Address</label>
