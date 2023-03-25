@@ -1,4 +1,10 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import {
+  ErrorMessage,
+  Field,
+  FieldArray,
+  Form,
+  Formik,
+} from 'formik';
 import React, { Fragment } from 'react';
 import * as Yup from 'yup';
 
@@ -13,6 +19,7 @@ const initialValues = {
     twitter: '',
   },
   phoneNumbers: ['', ''],
+  phNumbers: [''],
 };
 
 const onSubmit = values => {
@@ -115,6 +122,45 @@ function YoutubeForm() {
             name='phoneNumbers[1]'
           />
         </div>
+        <div className='form-control'>
+          <label>List of phone numbers</label>
+          <FieldArray name='phNumbers'>
+            {fieldArrayProps => {
+              const { push, remove, form } = fieldArrayProps;
+              const { values } = form;
+              const { phNumbers } = values;
+
+              return (
+                <Fragment>
+                  {phNumbers.map((phNumber, index) => {
+                    return (
+                      <div key={index}>
+                        <Field name={`phNumbers[${index}]`} />
+                        {index > 0 && (
+                          <button
+                            type='button'
+                            onClick={remove.bind(null, index)}
+                          >
+                            {' '}
+                            -{' '}
+                          </button>
+                        )}
+                        <button
+                          type='button'
+                          onClick={push.bind(null, '')}
+                        >
+                          {' '}
+                          +{' '}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </Fragment>
+              );
+            }}
+          </FieldArray>
+        </div>
+
         <button type='submit'>Submit</button>
       </Form>
     </Formik>
