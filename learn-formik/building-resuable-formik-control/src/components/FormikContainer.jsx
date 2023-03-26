@@ -14,13 +14,26 @@ const genderOptions = [
   { key: 'Male', value: 'male' },
   { key: 'Female', value: 'female' },
 ];
-const initialValues = { email: '', comments: '', selectOption: '', gender: '' };
+
+const hobbies = [
+  { key: 'Football', value: 'football' },
+  { key: 'Badminton', value: 'badminton' },
+  { key: 'Basketball', value: 'basketball' },
+];
+const initialValues = {
+  email: '',
+  comments: '',
+  selectOption: '',
+  gender: '',
+  hobbies: [],
+};
 
 const validationSchema = Yup.object({
   email: Yup.string().required('Required').email(),
   comments: Yup.string().required('Required'),
   selectOption: Yup.string().required('Please select your option.'),
   gender: Yup.string().required('Required!'),
+  hobbies: Yup.array().min(1, 'Must have at least one hobbie'),
 });
 
 const onSubmitHandler = values => {
@@ -54,6 +67,12 @@ const FormikContainer = () => {
             label='Your gender:'
             control='radio'
             options={genderOptions}
+          />
+          <FormikControl
+            name='hobbies'
+            label='What is your hobbies: '
+            control='checkbox'
+            options={hobbies}
           />
           <button type='submit'>Submit</button>
         </Form>
