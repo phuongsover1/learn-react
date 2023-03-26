@@ -3,12 +3,12 @@ import { Field, ErrorMessage } from 'formik';
 import TextError from './TextError';
 
 const Input = props => {
-  const { label, name, ...rest } = props;
+  const { label, name, control, ...rest } = props;
 
   return (
     <div className='form-control'>
-      <label for={name}>{label}</label>
-      <Field name={name} id={name} {...rest} />
+      <label htmlFor={name}>{label}</label>
+      <Field as={control} name={name} id={name} {...rest} />
       <ErrorMessage name={name} component={TextError} />
     </div>
   );
