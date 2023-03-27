@@ -3,6 +3,7 @@ import Input from './Input';
 import Select from './Select';
 import RadioButtons from './RadioButtons';
 import CheckboxButtons from './CheckboxButtons';
+import DateView from './DateView';
 
 const FormikControl = props => {
   const { control, ...rest } = props;
@@ -17,6 +18,7 @@ const FormikControl = props => {
     case 'checkbox':
       return <CheckboxButtons {...rest} />;
     case 'date':
+      return <DateView {...rest} />;
     default:
       return null;
   }

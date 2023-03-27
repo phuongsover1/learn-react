@@ -26,6 +26,7 @@ const initialValues = {
   selectOption: '',
   gender: '',
   hobbies: [],
+  birthday: null,
 };
 
 const validationSchema = Yup.object({
@@ -34,10 +35,17 @@ const validationSchema = Yup.object({
   selectOption: Yup.string().required('Please select your option.'),
   gender: Yup.string().required('Required!'),
   hobbies: Yup.array().min(1, 'Must have at least one hobbie'),
+  birthday: Yup.date().required('required').nullable(),
 });
 
 const onSubmitHandler = values => {
   console.log('form data:', values);
+  console.log('saved date: ', values.birthdate);
+  console.log('after JSON.stringify: ', JSON.stringify(values));
+  console.log(
+    'after parse JSON.stringify: ',
+    JSON.parse(JSON.stringify(values.birthdate))
+  );
 };
 
 const FormikContainer = () => {
@@ -73,6 +81,11 @@ const FormikContainer = () => {
             label='What is your hobbies: '
             control='checkbox'
             options={hobbies}
+          />
+          <FormikControl
+            name='birthdate'
+            label='When was you born?'
+            control='date'
           />
           <button type='submit'>Submit</button>
         </Form>

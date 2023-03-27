@@ -4,7 +4,6 @@ import TextError from './TextError';
 
 const RadioButtons = props => {
   const { label, name, options, ...rest } = props;
-  console.log(options);
 
   return (
     <div className='form-control'>
