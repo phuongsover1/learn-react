@@ -5,6 +5,7 @@ import ButtonComponent from './components/ButtonComponent';
 import DatePickerComponent from './components/DatePickerComponent';
 import FormComponent from './components/FormComponent';
 import InputComponent from './components/InputComponent';
+import ProgressComponent from './components/ProgressComponent';
 import SelectComponent from './components/SelectComponent';
 import SpinComponent from './components/SpinComponent';
 import TableComponent from './components/TableComponent';
@@ -22,15 +23,14 @@ function App() {
         textAlign: 'center',
       }}
     >
-      <Space direction='vertical'>
-        {/* <ButtonComponent /> */}
-        {/* <InputComponent /> */}
-        {/* <SelectComponent /> */}
-        {/* <FormComponent /> */}
-        {/* <TableComponent /> */}
-        {/* <DatePickerComponent /> */}
-        <SpinComponent />
-      </Space>
+      {/* <ButtonComponent /> */}
+      {/* <InputComponent /> */}
+      {/* <SelectComponent /> */}
+      {/* <FormComponent /> */}
+      {/* <TableComponent /> */}
+      {/* <DatePickerComponent /> */}
+      {/* <SpinComponent /> */}
+      <ProgressComponent />
     </div>
   );
 }
