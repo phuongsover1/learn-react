@@ -6,6 +6,7 @@ import DatePickerComponent from './components/DatePickerComponent';
 import FormComponent from './components/FormComponent';
 import InputComponent from './components/InputComponent';
 import SelectComponent from './components/SelectComponent';
+import SpinComponent from './components/SpinComponent';
 import TableComponent from './components/TableComponent';
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
         {/* <SelectComponent /> */}
         {/* <FormComponent /> */}
         {/* <TableComponent /> */}
-        <DatePickerComponent />
+        {/* <DatePickerComponent /> */}
+        <SpinComponent />
       </Space>
     </div>
   );
