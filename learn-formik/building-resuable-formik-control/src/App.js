@@ -1,11 +1,14 @@
 import './App.css';
 import FormikContainer from './components/FormikContainer';
+import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
   return (
-    <div className='App'>
-      <FormikContainer />
-    </div>
+    <ChakraProvider>
+      <div className='App'>
+        <FormikContainer />
+      </div>
+    </ChakraProvider>
   );
 }
 

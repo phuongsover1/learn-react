@@ -1,10 +1,11 @@
 import './App.css';
 import ButtonRed from './components/ButtonRed';
-import YoutubeForm from './components/YoutubeForm';
+import logo from './logo.svg';
 
 function App() {
   return (
     <div className='App'>
+      <ButtonRed />
       <ButtonRed />
       <ButtonRed />
     </div>

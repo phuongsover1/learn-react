@@ -1,7 +1,8 @@
+import { Form, Formik } from 'formik';
 import React from 'react';
-import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import FormikControl from './FormikControl';
+import ChakraInput from './ChakraInput';
 
 const selectOptions = [
   { key: 'Select option', value: '' },
@@ -27,6 +28,7 @@ const initialValues = {
   gender: '',
   hobbies: [],
   birthday: null,
+  name: '',
 };
 
 const validationSchema = Yup.object({
@@ -36,6 +38,9 @@ const validationSchema = Yup.object({
   gender: Yup.string().required('Required!'),
   hobbies: Yup.array().min(1, 'Must have at least one hobbie'),
   birthday: Yup.date().required('required').nullable(),
+  name: Yup.string()
+    .min(2, 'Name must be at least 2 characters')
+    .required('Required!'),
 });
 
 const onSubmitHandler = values => {
@@ -88,6 +93,7 @@ const FormikContainer = () => {
             control='date'
           />
           <button type='submit'>Submit</button>
+          <ChakraInput name='name' label='Your name ?' type='text' />
         </Form>
       )}
     </Formik>
