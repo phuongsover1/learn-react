@@ -60,6 +60,11 @@ const TablePaginationSortingFilter = () => {
       title: 'Completed',
       dataIndex: 'completed',
       render: completed => (completed ? 'Completed' : 'In Progress'),
+      filters: [
+        { text: 'Completed', value: true },
+        { text: 'In Progress', value: false },
+      ],
+      onFilter: (value, record) => record.completed === value,
     },
   ];
   return (
@@ -68,6 +73,7 @@ const TablePaginationSortingFilter = () => {
         <Table
           dataSource={dataSource}
           columns={columns}
+          sortDirections={['ascend', 'descend', 'ascend']}
           pagination={{
             current: paginationState.current,
             pageSize: paginationState.pageSize,
