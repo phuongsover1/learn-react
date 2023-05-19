@@ -9,6 +9,7 @@ import ProgressComponent from './components/ProgressComponent';
 import SelectComponent from './components/SelectComponent';
 import SpinComponent from './components/SpinComponent';
 import TableComponent from './components/TableComponent';
+import TablePaginationSortingFilter from './components/TablePaginationSortingFilter';
 
 function App() {
   return (
@@ -16,10 +17,7 @@ function App() {
       className='App'
       style={{
         width: '50%',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
+        margin: '3rem auto 0 auto',
         textAlign: 'center',
       }}
     >
@@ -30,7 +28,8 @@ function App() {
       {/* <TableComponent /> */}
       {/* <DatePickerComponent /> */}
       {/* <SpinComponent /> */}
-      <ProgressComponent />
+      {/* <ProgressComponent /> */}
+      <TablePaginationSortingFilter />
     </div>
   );
 }
