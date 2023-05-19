@@ -1,7 +1,8 @@
 import { Button } from 'antd';
 import { useState } from 'react';
-// import './App.css';
+import './App.css';
 import ButtonComponent from './components/ButtonComponent';
+import FormComponent from './components/FormComponent';
 import InputComponent from './components/InputComponent';
 import SelectComponent from './components/SelectComponent';
 
@@ -11,7 +12,8 @@ function App() {
       <header className='App-header'>
         {/* <ButtonComponent /> */}
         {/* <InputComponent /> */}
-        <SelectComponent />
+        {/* <SelectComponent /> */}
+        <FormComponent />
       </header>
     </div>
   );
