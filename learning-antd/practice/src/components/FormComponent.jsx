@@ -1,18 +1,28 @@
-import { Button, Form, Input } from 'antd';
-import React from 'react';
+import { Button, Form, Input, message } from 'antd';
+import React, { useState } from 'react';
 
 const FormComponent = () => {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
+  const [loading, setLoading] = useState(false);
+  const onFinish = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      message.success('Login successfully!');
+    }, 2000);
+  };
+
   return (
     <Form
-      // style={{
-      //   width: '50%',
-      //   position: 'absolute',
-      //   top: '50%',
-      //   left: '50%',
-      //   transform: 'translate(-50%, -50%)',
-      // }}
+      style={{
+        width: '50%',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+      }}
       layout='vertical'
+      onFinish={onFinish}
     >
       <Form.Item label='User Name:' name='username'>
         <Input autoComplete='off' placeholder='User name'></Input>
@@ -28,7 +38,12 @@ const FormComponent = () => {
         ></Input.Password>
       </Form.Item>
       <Form.Item>
-        <Button type='primary' htmlType='submit' block>
+        <Button
+          type='primary'
+          loading={loading}
+          htmlType='submit'
+          block
+        >
           Log In
         </Button>
       </Form.Item>

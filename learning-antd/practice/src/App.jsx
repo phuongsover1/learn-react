@@ -14,8 +14,8 @@ function App() {
         {/* <ButtonComponent /> */}
         {/* <InputComponent /> */}
         {/* <SelectComponent /> */}
-        {/* <FormComponent /> */}
-        <TableComponent />
+        <FormComponent />
+        {/* <TableComponent /> */}
       </header>
     </div>
   );
