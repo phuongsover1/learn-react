@@ -2,6 +2,7 @@ import { Button, Space } from 'antd';
 import { useState } from 'react';
 // import './App.css';
 import ButtonComponent from './components/ButtonComponent';
+import CRUDTable from './components/CRUDTable';
 import DatePickerComponent from './components/DatePickerComponent';
 import FormComponent from './components/FormComponent';
 import InputComponent from './components/InputComponent';
@@ -29,7 +30,8 @@ function App() {
       {/* <DatePickerComponent /> */}
       {/* <SpinComponent /> */}
       {/* <ProgressComponent /> */}
-      <TablePaginationSortingFilter />
+      {/* <TablePaginationSortingFilter /> */}
+      <CRUDTable />
     </div>
   );
 }
