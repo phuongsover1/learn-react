@@ -46,6 +46,7 @@ export async function getStaticProps() {
   // fetch data from an API
   return {
     props: { meetups: DUMMY_MEETUPS },
+    revalidate: 10,
   };
 }
 
