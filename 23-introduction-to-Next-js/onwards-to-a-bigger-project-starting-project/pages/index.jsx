@@ -36,14 +36,17 @@ const DUMMY_MEETUPS = [
     description: 'This is a fourth meetup!',
   },
 ];
-const HomePage = () => {
-  const [listMeetups, setListMeetups] = useState([]);
-  useEffect(() => {
-    // send http request
-    setListMeetups(DUMMY_MEETUPS);
-  }, []);
+const HomePage = props => {
+  const listMeetups = props.meetups;
 
   return <MeetupList meetups={listMeetups} />;
 };
+
+export async function getStaticProps() {
+  // fetch data from an API
+  return {
+    props: { meetups: DUMMY_MEETUPS },
+  };
+}
 
 export default HomePage;
