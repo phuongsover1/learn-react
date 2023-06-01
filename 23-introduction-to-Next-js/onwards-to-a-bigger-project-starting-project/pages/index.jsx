@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MeetupList from '../components/meetups/MeetupList';
 import Layout from '../components/layout/Layout';
 
@@ -37,7 +37,13 @@ const DUMMY_MEETUPS = [
   },
 ];
 const HomePage = () => {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+  const [listMeetups, setListMeetups] = useState([]);
+  useEffect(() => {
+    // send http request
+    setListMeetups(DUMMY_MEETUPS);
+  }, []);
+
+  return <MeetupList meetups={listMeetups} />;
 };
 
 export default HomePage;
