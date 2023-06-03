@@ -1,13 +1,13 @@
 import React from 'react';
 
-type PersonProps = {
+type PersonNameProps = {
   name: {
     firstName: string;
     lastName: string;
   };
 };
 
-const Person = (props: PersonProps) => {
+const Person = (props: PersonNameProps) => {
   return (
     <div>My name is {props.name.lastName + ' ' + props.name.firstName}</div>
   );
