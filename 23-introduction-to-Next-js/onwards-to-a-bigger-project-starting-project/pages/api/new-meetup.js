@@ -1,20 +1,29 @@
 // /api/new-meetup
 // POST /api/new-meetup
 import { MongoClient } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 async function handler(request, response) {
+  console.log('request: ', request);
   if (request.method === 'POST') {
     const data = response.body;
+    console.log('data in handler: ', data);
 
     const client = await MongoClient.connect(
-      'mongodb+srv://phuongsover2:next.js-mongodb@next-js-api.ef8pc3a.mongodb.net/meetups?retryWrites=true&w=majority'
+      'mongodb+srv://phuongsover2:phuongsover1@next-js-api.ef8pc3a.mongodb.net/?retryWrites=true&w=majority'
     );
 
-    const db = client.db();
+    const db = client.db('next-js-mongodb');
 
     const meetupsCollection = db.collection('meetups');
 
-    const result = await meetupsCollection.insertOne(data);
+    console.log('data :', data);
+    data = JSON.parse(data);
+    const id = new ObjectId(String(Math.floor(Math.random() * 1000)));
+    data = { ...data, id };
+    console.log('last data: ', data);
+    const result = await meetupsCollection.insertOne(JSON.stringify(data));
+
     console.log(result);
 
     client.close();
