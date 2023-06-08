@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Button from './components/Button';
+import Container from './components/Container';
 import Input from './components/Input';
 
 const handleClick = (
@@ -18,8 +19,9 @@ const handleChange = (event?: React.ChangeEvent<HTMLInputElement>): void => {
 function App() {
   return (
     <div className='App'>
-      <Button handleClick={handleClick.bind(null, 1)} />
-      <Input value='asd' handleChange={handleChange} />
+      {/* <Button handleClick={handleClick.bind(null, 1)} /> */}
+      {/* <Input value='asd' handleChange={handleChange} /> */}
+      <Container styles={{border: '1px solid black', padding: '1rem'}}  />
     </div>
   );
 }
