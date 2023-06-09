@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Button from './components/Button';
 import Container from './components/Container';
+import Box from './components/context/Box';
+import ThemeContextProvider from './components/context/ThemeContext';
 import Counter from './components/Counter';
 import Input from './components/Input';
 
@@ -23,7 +25,10 @@ function App() {
       {/* <Button handleClick={handleClick.bind(null, 1)} /> */}
       {/* <Input value='asd' handleChange={handleChange} /> */}
       {/* <Container styles={{border: '1px solid black', padding: '1rem'}}  /> */}
-      <Counter />
+      <ThemeContextProvider>
+        <Box />
+      </ThemeContextProvider>
+      {/* <Counter /> */}
     </div>
   );
 }
