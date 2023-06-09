@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Button from './components/Button';
 import Container from './components/Container';
+import Counter from './components/Counter';
 import Input from './components/Input';
 
 const handleClick = (
@@ -21,7 +22,8 @@ function App() {
     <div className='App'>
       {/* <Button handleClick={handleClick.bind(null, 1)} /> */}
       {/* <Input value='asd' handleChange={handleChange} /> */}
-      <Container styles={{border: '1px solid black', padding: '1rem'}}  />
+      {/* <Container styles={{border: '1px solid black', padding: '1rem'}}  /> */}
+      <Counter />
     </div>
   );
 }
