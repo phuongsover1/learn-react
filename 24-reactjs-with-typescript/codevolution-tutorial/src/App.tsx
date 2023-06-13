@@ -7,6 +7,7 @@ import Input from './components/Input';
 import CounterClassComponent from './components/class/Counter';
 import Private from './components/auth/Private';
 import Profile from './components/auth/Profile';
+import Lists from './components/generics/Lists';
 
 const handleClick = (
   id: number,
@@ -28,7 +29,20 @@ function App() {
       {/* <Container styles={{border: '1px solid black', padding: '1rem'}}  /> */}
       {/* <Counter /> */}
       {/* <CounterClassComponent message='The total count is: ' /> */}
-      <Private isLoggedIn={true} component={Profile} />
+      {/* <Private isLoggedIn={true} component={Profile} /> */}
+      {/* <Lists */}
+      {/*   items={['Batman', 'Superman', 'Wonder Woman']} */}
+      {/*   onClick={val => console.log(val)} */}
+      {/* /> */}
+      {/* <Lists items={[1, 2, 3, 4, 5]} onClick={val => console.log(val)} /> */}
+      <Lists
+        items={[
+          { id: 1, name: 'Phuong', age: 22 },
+          { id: 2, name: 'Khang', age: 19 },
+          { id: 3, name: 'Long', age: 23 },
+        ]}
+        onClick={val => console.log(val)}
+      />
     </div>
   );
 }
