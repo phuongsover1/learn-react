@@ -4,6 +4,7 @@ import Button from './components/Button';
 import Container from './components/Container';
 import Counter from './components/Counter';
 import Input from './components/Input';
+import CounterClassComponent from './components/class/Counter';
 
 const handleClick = (
   id: number,
@@ -23,7 +24,8 @@ function App() {
       {/* <Button handleClick={handleClick.bind(null, 1)} /> */}
       {/* <Input value='asd' handleChange={handleChange} /> */}
       {/* <Container styles={{border: '1px solid black', padding: '1rem'}}  /> */}
-      <Counter />
+      {/* <Counter /> */}
+      <CounterClassComponent message='The total count is: ' />
     </div>
   );
 }
