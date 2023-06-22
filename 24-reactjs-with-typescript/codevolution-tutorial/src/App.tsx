@@ -9,7 +9,9 @@ import Input from './components/Input';
 import CounterClassComponent from './components/class/Counter';
 import Private from './components/auth/Private';
 import Profile from './components/auth/Profile';
-import Lists from './components/generics/Lists';
+// import Lists from './components/generics/Lists';
+import RandomNumber from './components/restrictingProps/RandomNumber';
+import Toast from './components/template-literals-and-exclude/Toast';
 
 const handleClick = (
   id: number,
@@ -26,12 +28,14 @@ const handleChange = (event?: React.ChangeEvent<HTMLInputElement>): void => {
 function App() {
   return (
     <div className='App'>
+      <Toast position='center' />
+      {/* <RandomNumber value={10} isPositive /> */}
       {/* <Button handleClick={handleClick.bind(null, 1)} /> */}
       {/* <Input value='asd' handleChange={handleChange} /> */}
       {/* <Container styles={{border: '1px solid black', padding: '1rem'}}  /> */}
-      <ThemeContextProvider>
-        <Box />
-      </ThemeContextProvider>
+      {/* <ThemeContextProvider> */}
+      {/*   <Box /> */}
+      {/* </ThemeContextProvider> */}
       {/* <Counter /> */}
       {/* <Counter /> */}
       {/* <CounterClassComponent message='The total count is: ' /> */}
@@ -41,14 +45,14 @@ function App() {
       {/*   onClick={val => console.log(val)} */}
       {/* /> */}
       {/* <Lists items={[1, 2, 3, 4, 5]} onClick={val => console.log(val)} /> */}
-      <Lists
-        items={[
-          { id: 1, name: 'Phuong', age: 22 },
-          { id: 2, name: 'Khang', age: 19 },
-          { id: 3, name: 'Long', age: 23 },
-        ]}
-        onClick={val => console.log(val)}
-      />
+      {/* <Lists */}
+      {/*   items={[ */}
+      {/*     { id: 1, name: 'Phuong', age: 22 }, */}
+      {/*     { id: 2, name: 'Khang', age: 19 }, */}
+      {/*     { id: 3, name: 'Long', age: 23 }, */}
+      {/*   ]} */}
+      {/*   onClick={val => console.log(val)} */}
+      {/* /> */}
     </div>
   );
 }
