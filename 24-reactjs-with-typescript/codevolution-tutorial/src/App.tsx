@@ -12,6 +12,8 @@ import Profile from './components/auth/Profile';
 // import Lists from './components/generics/Lists';
 import RandomNumber from './components/restrictingProps/RandomNumber';
 import Toast from './components/template-literals-and-exclude/Toast';
+import { CustomButton } from './components/wrapping-html-elements/Button';
+import CustomInput from './components/wrapping-html-elements/Input';
 
 const handleClick = (
   id: number,
@@ -28,7 +30,12 @@ const handleChange = (event?: React.ChangeEvent<HTMLInputElement>): void => {
 function App() {
   return (
     <div className='App'>
-      <Toast position='center' />
+      <CustomButton variant='primary' onClick={() => console.log('button')}>
+        Primary Button
+      </CustomButton>
+
+      <CustomInput value={'Phuong'} />
+      {/* <Toast position='center' /> */}
       {/* <RandomNumber value={10} isPositive /> */}
       {/* <Button handleClick={handleClick.bind(null, 1)} /> */}
       {/* <Input value='asd' handleChange={handleChange} /> */}
