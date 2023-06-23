@@ -14,6 +14,7 @@ import RandomNumber from './components/restrictingProps/RandomNumber';
 import Toast from './components/template-literals-and-exclude/Toast';
 import { CustomButton } from './components/wrapping-html-elements/Button';
 import CustomInput from './components/wrapping-html-elements/Input';
+import CustomText from './components/polymorphic/Text';
 
 const handleClick = (
   id: number,
@@ -30,11 +31,21 @@ const handleChange = (event?: React.ChangeEvent<HTMLInputElement>): void => {
 function App() {
   return (
     <div className='App'>
-      <CustomButton variant='primary' onClick={() => console.log('button')}>
-        Primary Button
-      </CustomButton>
+      <CustomText as='h1' size='lg'>
+        Heading
+      </CustomText>
+      <CustomText as='p' size='md'>
+        Paragraph
+      </CustomText>
+      <CustomText as='label' htmlFor='myName' size='sm' color='secondary'>
+        Label
+      </CustomText>
 
-      <CustomInput value={'Phuong'} />
+      {/* <CustomButton variant='primary' onClick={() => console.log('button')}> */}
+      {/*   Primary Button */}
+      {/* </CustomButton> */}
+
+      {/* <CustomInput value={'Phuong'} /> */}
       {/* <Toast position='center' /> */}
       {/* <RandomNumber value={10} isPositive /> */}
       {/* <Button handleClick={handleClick.bind(null, 1)} /> */}
