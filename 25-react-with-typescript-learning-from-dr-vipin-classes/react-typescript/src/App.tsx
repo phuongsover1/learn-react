@@ -7,6 +7,7 @@ function App() {
   return (
     <div className='App'>
       <ChannelInfo name='Dr. Vipin Classes' playlistCount={40} />
+      <p>sas</p>
     </div>
   );
 }
