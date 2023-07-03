@@ -3,6 +3,7 @@ import React from 'react';
 interface ChannelProps {
   name: string;
   playlistCount: number;
+  noOfSubscriptions?: number;
 }
 
 const ChannelInfo = (props: ChannelProps) => {

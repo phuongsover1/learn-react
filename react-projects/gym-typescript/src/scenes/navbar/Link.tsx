@@ -10,6 +10,7 @@ type Props = {
 
 const Link = ({ page, selectedPage, setSelectedPage }: Props) => {
   const lowerCasePage = page.toLowerCase().replace(/ /g, "") as SelectedPage;
+  console.log("🚀 ~ file: Link.tsx:13 ~ Link ~ lowerCasePage:", lowerCasePage);
   return (
     <AnchorLink
       className={`${
