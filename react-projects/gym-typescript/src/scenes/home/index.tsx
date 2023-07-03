@@ -8,6 +8,7 @@ import SponsorForbes from "@/assets/SponsorForbes.png";
 import SponsorFortune from "@/assets/SponsorFortune.png";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { motion } from "framer-motion";
 
 type Props = {
   setSelectedPage: (page: SelectedPage) => void;
@@ -24,7 +25,17 @@ const Home = ({ setSelectedPage }: Props) => {
         <div className="z-10 mt-32 md:basis-3/5">
           {/* HEADINGS */}
           <div className="md:-mt-20">
-            <div className="relative">
+            <motion.div
+              className="relative"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5 }}
+              variants={{
+                hidden: { opacity: 0, x: -50 },
+                visible: { opacity: 1, x: 0 },
+              }}
+            >
               <div className="before:absolute before:-left-20 before:-top-20 before:z-[-1] md:before:content-evolvetext ">
                 <img src={HomePageText} alt="home-page-text" />
               </div>
@@ -33,9 +44,18 @@ const Home = ({ setSelectedPage }: Props) => {
                 Class Studios to get the Body Shapes That you Dream of..Get Your
                 Dream Body Now.
               </p>
-            </div>
+            </motion.div>
             {/* ACTIONS */}
-            <div className="mt-8 flex items-center gap-8 md:justify-start">
+            <motion.div
+              className="mt-8 flex items-center gap-8 md:justify-start"
+              initial="hidden"
+              whileInView="visible"
+              transition={{ duration: 0.5, delay: 0.2 }}
+              variants={{
+                hidden: { x: -50, opacity: 0 },
+                visible: { x: 0, opacity: 1 },
+              }}
+            >
               <ActionButton setSelectedPage={setSelectedPage}>
                 Join Now
               </ActionButton>
@@ -46,7 +66,7 @@ const Home = ({ setSelectedPage }: Props) => {
               >
                 Learn More
               </AnchorLink>
-            </div>
+            </motion.div>
           </div>
         </div>
         {/* IMAGE */}
