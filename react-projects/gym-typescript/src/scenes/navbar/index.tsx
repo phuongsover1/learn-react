@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import Logo from "@/assets/Logo.png";
-import Link from "./Link";
-import { SelectedPage } from "@/shared/types";
-import useMediaQuery from "@/hooks/useMediaQuery";
-import ActionButton from "@/shared/ActionButton";
+import React, { useState } from 'react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
+import Logo from '@/assets/Logo.png';
+import Link from './Link';
+import { SelectedPage } from '@/shared/types';
+import useMediaQuery from '@/hooks/useMediaQuery';
+import ActionButton from '@/shared/ActionButton';
 
 type Props = {
   isTopOfPage: boolean;
@@ -13,16 +13,16 @@ type Props = {
 };
 
 const Navbar = ({ isTopOfPage, selectedPage, setSelectedPage }: Props) => {
-  const flexBetween = "flex items-center justify-between";
+  const flexBetween = 'flex items-center justify-between';
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
-  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)"); // if current window is above 1060px then return true, else return false;
-  const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
+  const isAboveMediumScreens = useMediaQuery('(min-width: 1060px)'); // if current window is above 1060px then return true, else return false;
+  const navbarBackground = isTopOfPage ? '' : 'bg-primary-100 drop-shadow';
   return (
     <nav>
       <div
         className={`${flexBetween} ${navbarBackground} fixed top-0 z-30 w-full py-6`}
       >
-        <div className={`${flexBetween} mx-auto w-5/6`}>
+        <div className={`${flexBetween}  mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE  */}
             <img alt="logo" src={Logo} />

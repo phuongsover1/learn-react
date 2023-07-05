@@ -1,11 +1,12 @@
-import Navbar from "@/scenes/navbar";
-import { useEffect, useState } from "react";
-import { SelectedPage } from "./shared/types";
-import Home from "./scenes/home";
+import Navbar from '@/scenes/navbar';
+import { useEffect, useState } from 'react';
+import { SelectedPage } from './shared/types';
+import Home from './scenes/home';
+import Benefits from './scenes/benefits';
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
-    SelectedPage.Home
+    SelectedPage.Home,
   );
 
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
@@ -17,10 +18,10 @@ function App() {
         setSelectedPage(SelectedPage.Home);
       } else setIsTopOfPage(false);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -33,6 +34,7 @@ function App() {
           setSelectedPage={setSelectedPage}
         />
         <Home setSelectedPage={setSelectedPage} />
+        <Benefits setSelectedPage={setSelectedPage} />
       </div>
     </>
   );
