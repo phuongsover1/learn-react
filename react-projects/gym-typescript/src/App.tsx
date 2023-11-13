@@ -30,7 +30,10 @@ function App() {
 
   return (
     <>
-      <div className="app bg-gray-20">
+      <div className="app bg-gray-20 text-white">
+        <div className="font-wh bg-gray-20"></div>
+        <div className="bg-">div</div>
+        <div className="sas text-2xl ">dsd</div>
         <Navbar
           isTopOfPage={isTopOfPage}
           selectedPage={selectedPage}

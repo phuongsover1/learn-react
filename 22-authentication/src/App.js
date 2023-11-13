@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Layout from './components/Layout/Layout';
@@ -8,7 +8,9 @@ import HomePage from './pages/HomePage';
 import { AuthContext } from './store/auth-context';
 
 function App() {
+
   const ctxObj = useContext(AuthContext);
+
   return (
     <Layout>
       <Switch>
